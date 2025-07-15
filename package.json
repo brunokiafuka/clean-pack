@@ -1,0 +1,50 @@
+{
+  "name": "clean-pack",
+  "version": "1.0.0",
+  "description": "A CLI tool to clean up node_modules",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "clean-pack": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc && node dist/cli.js",
+    "dev": "tsc --watch",
+    "start": "node dist/cli.js",
+    "lint": "eslint . --ext .ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "cli",
+    "node_modules",
+    "cleanup"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ink": "^4.4.1",
+    "react": "^18.2.0",
+    "meow": "^13.1.0",
+    "execa": "^8.0.1",
+    "glob": "^10.3.10",
+    "ink-select-input": "^5.0.0",
+    "ink-spinner": "^5.0.0",
+    "pretty-bytes": "^6.1.1",
+    "date-fns": "^3.3.1",
+    "figures": "^5.0.0",
+    "figlet": "^1.7.0",
+    "gradient-string": "^2.0.2",
+    "ink-table": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "@types/figlet": "^1.5.8",
+    "@types/gradient-string": "^1.1.5"
+  }
+}

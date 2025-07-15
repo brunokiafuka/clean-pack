@@ -8,7 +8,7 @@
     "clean-pack": "./dist/cli.js"
   },
   "scripts": {
-    "build": "tsc && node dist/cli.js",
+    "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/cli.js",
     "lint": "eslint . --ext .ts",

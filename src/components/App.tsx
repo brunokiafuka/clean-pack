@@ -4,7 +4,7 @@ import { glob } from "glob";
 import { execa } from "execa";
 import path from "path";
 import fs from "fs/promises";
-import prettyBytes from "pretty-bytes";
+
 import PackageTable from "./PackageTable.js";
 import Header from "./Header.js";
 import CompletionSummary from "./CompletionSummary.js";
@@ -35,6 +35,7 @@ const App = ({ path: targetPath = process.cwd() }: Props) => {
   const [deletedCount, setDeletedCount] = useState(0);
   const [removedPackages, setRemovedPackages] = useState<RemovedPackage[]>([]);
   const [totalSpaceSaved, setTotalSpaceSaved] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const findNodeModules = async () => {
@@ -98,6 +99,10 @@ const App = ({ path: targetPath = process.cwd() }: Props) => {
     }
   };
 
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
+
   const deleteSelectedPackages = async (selectedPackages: Package[]) => {
     const removed: RemovedPackage[] = [];
     let spaceSaved = 0;
@@ -132,6 +137,15 @@ const App = ({ path: targetPath = process.cwd() }: Props) => {
     setIsDeleting(false);
   };
 
+  const filteredPackages = searchTerm
+    ? packages.filter((pkg) =>
+        path
+          .relative(process.cwd(), pkg.path)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      )
+    : packages;
+
   return (
     <Box flexDirection="column">
       <Header />
@@ -153,11 +167,13 @@ const App = ({ path: targetPath = process.cwd() }: Props) => {
         />
       ) : (
         <PackageTable
-          packages={packages}
+          packages={filteredPackages}
           loading={loading}
           onSelect={handleSelect}
           onSelectAll={handleSelectAll}
           onSubmit={handleSubmit}
+          onSearch={handleSearch}
+          searchTerm={searchTerm}
         />
       )}
     </Box>

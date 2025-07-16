@@ -1,7 +1,7 @@
 {
   "name": "clean-pack",
-  "version": "1.0.0",
-  "description": "A CLI tool to clean up node_modules",
+  "version": "0.0.1",
+  "description": "A beautiful CLI tool to clean up node_modules directories with style",
   "type": "module",
   "main": "dist/cli.js",
   "bin": {
@@ -12,15 +12,41 @@
     "dev": "tsc --watch",
     "start": "node dist/cli.js",
     "lint": "eslint . --ext .ts",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [
     "cli",
     "node_modules",
-    "cleanup"
+    "cleanup",
+    "disk-space",
+    "maintenance",
+    "development-tools",
+    "system-tools",
+    "node",
+    "typescript"
   ],
-  "author": "",
+  "author": {
+    "name": "Bruno Kiafuka",
+    "url": "https://github.com/brunokiafuka"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brunokiafuka/clean-pack"
+  },
+  "bugs": {
+    "url": "https://github.com/brunokiafuka/clean-pack/issues"
+  },
+  "homepage": "https://github.com/brunokiafuka/clean-pack#readme",
   "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "ink": "^4.4.1",
     "react": "^18.2.0",
